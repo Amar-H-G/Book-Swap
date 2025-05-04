@@ -18,10 +18,14 @@ export default function SeekerDashboard() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await fetch(`https://book-swap-backend-946c.onrender.com/api/profile/${user.id}`);
+        const res = await fetch(
+          `https://book-swap-backend-946c.onrender.com/api/profile/${user.id}`
+        );
         const data = await res.json();
         if (data.success && data.user.profileImage) {
-          setProfileImage(`https://book-swap-backend-946c.onrender.com/${data.user.profileImage}`);
+          setProfileImage(
+            `https://book-swap-backend-946c.onrender.com/${data.user.profileImage}`
+          );
         }
       } catch (err) {
         console.error("Error fetching profile:", err);
@@ -36,7 +40,9 @@ export default function SeekerDashboard() {
 
   const fetchBooks = async () => {
     try {
-      const response = await axios.get("https://book-swap-backend-946c.onrender.com/api/books");
+      const response = await axios.get(
+        "https://book-swap-backend-946c.onrender.com/api/books"
+      );
 
       const booksArray = Array.isArray(response.data)
         ? response.data
@@ -149,29 +155,47 @@ export default function SeekerDashboard() {
                   key={book._id}
                   className="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105 duration-300"
                 >
-                  <div className="p-4 flex">
-                    <div className="flex-1 pr-4">
-                      <h3 className="text-lg font-semibold text-gray-900">
-                        {book.title}
-                      </h3>
-                      <p className="text-gray-600 text-sm">{book.author}</p>
-                      <p className="text-gray-500 text-xs mb-2">
-                        {book.location}
-                      </p>
-                      {book.genre && (
-                        <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">
-                          {book.genre}
-                        </span>
-                      )}
+                  <div className="p-4 flex flex-col h-full">
+                    <div className="flex mb-4">
+                      <div className="flex-1 pr-4">
+                        <h3 className="text-lg font-semibold text-gray-900">
+                          {book.title}
+                        </h3>
+                        <p className="text-gray-600 text-sm">{book.author}</p>
+                        <p className="text-gray-500 text-xs mb-2">
+                          {book.location}
+                        </p>
+                        {book.genre && (
+                          <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">
+                            {book.genre}
+                          </span>
+                        )}
+                      </div>
+                      <div className="flex-shrink-0 w-28 h-36">
+                        {book.image && (
+                          <img
+                            src={`https://book-swap-backend-946c.onrender.com/${book.image}`}
+                            alt={book.title}
+                            className="w-full h-full object-cover rounded-lg"
+                          />
+                        )}
+                      </div>
                     </div>
-                    <div className="flex-shrink-0 w-28 h-36">
-                      {book.image && (
-                        <img
-                          src={`https://book-swap-backend-946c.onrender.com/${book.image}`}
-                          alt={book.title}
-                          className="w-full h-full object-cover rounded-lg"
-                        />
-                      )}
+
+                    <div className="border-t border-gray-200 pt-4 text-sm text-gray-700">
+                      <h4 className="font-medium mb-1">Owner Details</h4>
+                      <p>{book.ownerName}</p>
+                      <p>{book.ownerEmail}</p>
+                      {book.ownerMobile && <p>{book.ownerMobile}</p>}
+                    </div>
+
+                    <div className="mt-4">
+                      <a
+                        href={`mailto:${book.ownerEmail}`}
+                        className="block text-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+                      >
+                        Contact Owner
+                      </a>
                     </div>
                   </div>
                 </div>
