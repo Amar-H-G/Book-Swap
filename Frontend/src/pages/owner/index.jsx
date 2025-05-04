@@ -27,10 +27,10 @@ export default function OwnerDashboard() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/profile/${user.id}`);
+        const res = await fetch(`https://book-swap-backend-946c.onrender.com/api/profile/${user.id}`);
         const data = await res.json();
         if (data.success && data.user.profileImage) {
-          setProfileImage(`http://localhost:5000/${data.user.profileImage}`);
+          setProfileImage(`https://book-swap-backend-946c.onrender.com/${data.user.profileImage}`);
         }
       } catch (err) {
         console.error("Error fetching profile:", err);
@@ -242,7 +242,7 @@ export default function OwnerDashboard() {
                     <div className="flex-shrink-0 w-32 h-40">
                       {book.image && (
                         <img
-                          src={`http://localhost:5000/${book.image}`}
+                          src={`https://book-swap-backend-946c.onrender.com/${book.image}`}
                           alt={book.title}
                           className="w-full h-full object-cover rounded-lg"
                         />
