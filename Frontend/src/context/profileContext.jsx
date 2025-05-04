@@ -22,7 +22,7 @@ export const ProfileProvider = ({ children }) => {
       setError(null);
       if (!user?.id) return;
       
-      const res = await axios.get(`http://localhost:5000/api/users/${user.id}`);
+      const res = await axios.get(`https://book-swap-backend-946c.onrender.com/api/users/${user.id}`);
       setProfile(res.data.user);
     } catch (err) {
       console.error("Failed to fetch profile", err);
@@ -38,7 +38,7 @@ export const ProfileProvider = ({ children }) => {
       if (!user?.id) throw new Error("No user ID available");
       
       const res = await axios.patch(
-        `http://localhost:5000/api/users/${user.id}`,
+        `https://book-swap-backend-946c.onrender.com/api/users/${user.id}`,
         updatedData,
         {
           headers: {
