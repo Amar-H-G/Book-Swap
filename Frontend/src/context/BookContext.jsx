@@ -12,7 +12,7 @@ export const BookProvider = ({ children }) => {
   const fetchBooks = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("http://localhost:5000/api/books");
+      const response = await axios.get("https://book-swap-backend-946c.onrender.com/api/books");
       const data = response.data;
       setBooks(Array.isArray(data) ? data : []);
     } catch (err) {
@@ -26,7 +26,7 @@ export const BookProvider = ({ children }) => {
   const addBook = async (bookData, isFormData = false) => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/books",
+        "https://book-swap-backend-946c.onrender.com/api/books",
         bookData,
         isFormData ? { headers: { "Content-Type": "multipart/form-data" } } : {}
       );
@@ -41,7 +41,7 @@ export const BookProvider = ({ children }) => {
   const updateBookStatus = async (id, status) => {
     try {
       const response = await axios.patch(
-        `http://localhost:5000/api/books/${id}/status`,
+        `https://book-swap-backend-946c.onrender.com/api/books/${id}/status`,
         { status }
       );
       setBooks((prev) =>
@@ -57,7 +57,7 @@ export const BookProvider = ({ children }) => {
   const updateBook = async (id, updatedData, isFormData = false) => {
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/books/${id}`,
+        `https://book-swap-backend-946c.onrender.com/api/books/${id}`,
         updatedData,
         isFormData ? { headers: { "Content-Type": "multipart/form-data" } } : {}
       );
@@ -73,7 +73,7 @@ export const BookProvider = ({ children }) => {
 
   const deleteBook = async (id, ownerId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/books/${id}`, {
+      await axios.delete(`https://book-swap-backend-946c.onrender.com/api/books/${id}`, {
         data: { ownerId },
       });
       setBooks((prev) => prev.filter((book) => book._id !== id));

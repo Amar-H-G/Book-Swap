@@ -18,10 +18,10 @@ export default function SeekerDashboard() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/profile/${user.id}`);
+        const res = await fetch(`https://book-swap-backend-946c.onrender.com/api/profile/${user.id}`);
         const data = await res.json();
         if (data.success && data.user.profileImage) {
-          setProfileImage(`http://localhost:5000/${data.user.profileImage}`);
+          setProfileImage(`https://book-swap-backend-946c.onrender.com/${data.user.profileImage}`);
         }
       } catch (err) {
         console.error("Error fetching profile:", err);
@@ -36,7 +36,7 @@ export default function SeekerDashboard() {
 
   const fetchBooks = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/books");
+      const response = await axios.get("https://book-swap-backend-946c.onrender.com/api/books");
 
       const booksArray = Array.isArray(response.data)
         ? response.data
@@ -167,7 +167,7 @@ export default function SeekerDashboard() {
                     <div className="flex-shrink-0 w-28 h-36">
                       {book.image && (
                         <img
-                          src={`http://localhost:5000/${book.image}`}
+                          src={`https://book-swap-backend-946c.onrender.com/${book.image}`}
                           alt={book.title}
                           className="w-full h-full object-cover rounded-lg"
                         />
