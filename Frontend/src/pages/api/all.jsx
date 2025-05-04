@@ -1,7 +1,7 @@
 import httpProxy from 'http-proxy';
 
 const proxy = httpProxy.createProxyServer({
-  target: 'http://localhost:5000',
+  target: 'https://book-swap-backend-946c.onrender.com',
   changeOrigin: true,
 });
 
