@@ -4,11 +4,11 @@ import { useAuth } from "./context/authContext";
 
 // Pages
 import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Profile from "./pages/Profile";
+import Login from "./pages/login";
+import Register from "./pages/register";
+import Profile from "./pages/profile";
 import OwnerDashboard from "./pages/owner";
-import SeekerDashboard from "./pages/Seeker";
+import SeekerDashboard from "./pages/seeker";
 import EditProfilePage from "./pages/editProfileForm";
 
 function App() {
