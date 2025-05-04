@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       setIsLoading(true);
-      const res = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      const res = await axios.post('https://book-swap-backend-946c.onrender.com/api/auth/login', { email, password });
       
       if (res.data.success && res.data.user) {
         localStorage.setItem('user', JSON.stringify(res.data.user));
@@ -45,7 +45,7 @@ export const AuthProvider = ({ children }) => {
   const register = async (userData) => {
     try {
       setIsLoading(true);
-      const res = await axios.post('http://localhost:5000/api/auth/register', userData);
+      const res = await axios.post('https://book-swap-backend-946c.onrender.com/api/auth/register', userData);
       
       if (res.data.success && res.data.user) {
         // Don't login automatically after registration
