@@ -6,6 +6,15 @@
 
 A platform for users to exchange books with others in their community.
 
+**AI Models Used:**
+
+- ChatGPT
+- DeepSeek
+
+**Deployment:**
+
+- Website is deployed on Render.com and is live at: [https://book-swap-frontend-tpyl.onrender.com/](https://book-swap-frontend-tpyl.onrender.com/)
+
 ---
 
 ## 🚀 Quick Start
